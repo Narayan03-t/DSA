@@ -19,11 +19,6 @@ public:
             mid = s+(e-s)/2;
 
         }
-        // if(ans == -1){
-        //     return s;
-        // }
-
-
 
         return ans;
         

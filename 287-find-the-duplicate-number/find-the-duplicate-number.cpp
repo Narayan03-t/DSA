@@ -22,12 +22,19 @@ public:
 
         // method 2
         
-        sort(nums.begin(),nums.end());
+        // sort(nums.begin(),nums.end());
 
-        for(int i=0;i<nums.size()-1;i++){
-            if(nums[i] == nums[i+1])
-            return nums[i];
+        // for(int i=0;i<nums.size()-1;i++){
+        //     if(nums[i] == nums[i+1])
+        //     return nums[i];
+        // }
+        // return -1;
+
+
+        // method 3
+        while(nums[0] != nums[nums[0]]){
+            swap(nums[0],nums[nums[0]]);
         }
-        return -1;
+        return nums[0];
     }
 };

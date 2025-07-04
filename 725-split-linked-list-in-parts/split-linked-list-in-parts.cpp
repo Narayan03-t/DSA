@@ -27,7 +27,7 @@ public:
         for (int i = 0; i < k; i++) {
             ListNode* partHead = curr;
             int thisPartSize = partSize + (i < extra ? 1 : 0);
-            for (int j = 0; j < thisPartSize - 1; ++j) {
+            for (int j = 0; j < thisPartSize - 1; j++) {
                 if (curr) curr = curr->next;
             }
             if (curr) {

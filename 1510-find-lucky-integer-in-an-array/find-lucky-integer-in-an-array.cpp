@@ -7,17 +7,17 @@ public:
             int num = arr[i];
             map[num] = map[num]+1;
         }
-        // int ans = -1;
-        vector<int>ans(n,-1);
+        int ans = -1;
+        //vector<int>ans(n,-1);
         for(auto it : map){
             int key = it.first;
             int freq = it.second;
 
             if(key == freq){
-                ans.push_back(key);
+                ans = max(ans,key);
             }
         }
-        int finalans = *max_element(ans.begin(),ans.end());
-        return finalans;
+        //int finalans = *max_element(ans.begin(),ans.end());
+        return ans;
     }
 };

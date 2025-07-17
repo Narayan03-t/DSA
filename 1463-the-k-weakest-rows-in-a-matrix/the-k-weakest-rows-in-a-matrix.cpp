@@ -8,9 +8,7 @@ public:
                 if (!vis[i] && (j == x || !mat[i][j])) {
                     ans[idx++] = i;
                     vis[i] = 1;
-                    if (idx == k){
-                        return ans;
-                    }
+                    if (idx == k) return ans;
                 }
         return ans;
     }

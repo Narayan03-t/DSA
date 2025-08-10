@@ -23,19 +23,37 @@ public:
         //     temp = temp->next;
         // }
         // return false;
+
+        // optimized
+        // ListNode* slow = head;
+        // ListNode* fast = head;
+        // ListNode* temp = head;
+        // while(temp != NULL && fast != NULL){
+        //     fast = fast->next;
+        //     if(fast != NULL){
+        //         slow = slow->next;
+        //         fast = fast->next;
+        //     }
+        //     if(slow==fast){
+        //         return true;
+        //     }
+        //     temp = temp->next;
+        // }
+        // return false;
+
+
         ListNode* slow = head;
         ListNode* fast = head;
-        ListNode* temp = head;
-        while(temp != NULL && fast != NULL){
+        while(fast != NULL && slow != NULL){
             fast = fast->next;
-            if(fast != NULL){
-                slow = slow->next;
-                fast = fast->next;
+            if(fast!=NULL){
+                fast=fast->next;
+                slow=slow->next;
             }
-            if(slow==fast){
+            if(fast==slow){
                 return true;
             }
-            temp = temp->next;
+            
         }
         return false;
     }

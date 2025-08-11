@@ -8,7 +8,7 @@
  */
 class Solution {
 public:
-    ListNode *detectCycle(ListNode *head) {
+    ListNode* brute(ListNode* head){
         unordered_map<ListNode*,bool>map;
         ListNode* temp = head;
         
@@ -22,6 +22,9 @@ public:
             temp = temp->next;
         }
         return NULL;
+    }
+    ListNode *detectCycle(ListNode *head) {
+        return brute(head);
 
     }
 };

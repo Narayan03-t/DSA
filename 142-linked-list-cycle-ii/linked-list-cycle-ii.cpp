@@ -23,8 +23,35 @@ public:
         }
         return NULL;
     }
-    ListNode *detectCycle(ListNode *head) {
-        return brute(head);
 
+    ListNode* checkcycle(ListNode* head){
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while(fast != NULL){
+            fast = fast->next;
+            if(fast != NULL){
+                fast = fast->next;
+                slow = slow->next;
+            }
+            if(slow == fast){
+                return fast;
+            }
+        }
+        return NULL;
+    }
+
+    ListNode *detectCycle(ListNode *head) {
+        //return brute(head);
+        ListNode* fast = checkcycle(head);
+        if(fast == NULL){
+            return NULL;
+        }
+        ListNode* slow = head;
+
+        while(slow != fast){
+            slow = slow->next;
+            fast = fast->next;
+        }
+        return slow;
     }
 };

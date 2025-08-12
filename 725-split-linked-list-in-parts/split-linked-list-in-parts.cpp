@@ -10,33 +10,30 @@
  */
 class Solution {
 public:
-    
     vector<ListNode*> splitListToParts(ListNode* head, int k) {
         int n = 0;
-        ListNode* curr = head;
-        while (curr) {
+        ListNode* temp = head;
+        while (temp != NULL) {
             n++;
-            curr = curr->next;
+            temp = temp->next;
         }
-        
-        int partSize = n / k;
-        int extra = n % k;
-        vector<ListNode*> result(k, nullptr);
-        curr = head;
-        
-        for (int i = 0; i < k; i++) {
-            ListNode* partHead = curr;
-            int thisPartSize = partSize + (i < extra ? 1 : 0);
-            for (int j = 0; j < thisPartSize - 1; j++) {
-                if (curr) curr = curr->next;
+
+        int partsize = n / k;
+        int extranode = n % k;
+
+        vector<ListNode*> ans(k, NULL);
+        ListNode* temp1 = head;
+        for (int i = 0; i < k && temp1 != NULL; i++) {
+            ans[i] = temp1;
+            int currpartsize = partsize + (extranode > 0 ? 1 : 0);
+            extranode--;
+            for (int j = 0; j < currpartsize - 1; j++) {
+                temp1 = temp1->next;
             }
-            if (curr) {
-                ListNode* next = curr->next;
-                curr->next = nullptr;
-                curr = next;
-            }
-            result[i] = partHead;
+            ListNode* nextpart = temp1->next;
+            temp1->next = NULL;
+            temp1 = nextpart;
         }
-        return result; 
+        return ans;
     }
 };

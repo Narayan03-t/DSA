@@ -3,7 +3,7 @@ public:
     int removeDuplicates(vector<int>& nums) {
         int n = nums.size();
 
-        // two pointer approach to solve thi prblm
+        // two pointer approach to solve this prblm
 
         int i=1;
         int j=0;

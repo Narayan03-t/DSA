@@ -5,6 +5,7 @@ public:
         // base case
         if(i>=n){
             ans.push_back(nums);
+            return;
         }
         // 1 case -> har ek position ke liye sabko equall mauka deba
         for(int j=i;j<n;j++){

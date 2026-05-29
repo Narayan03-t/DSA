@@ -17,21 +17,33 @@ public:
         // return char(ans);
 
         // Approach 2 (XOR)
-        int ans=0;
-        for(char &ch : s){
-            ans= ans^ch;
-        }
-        for(char &ch :t){
-            ans=ans^ch;
-        }
-        return ans;
-
-
-
+        // int ans=0;
+        // for(char &ch : s){
+        //     ans= ans^ch;
+        // }
+        // for(char &ch :t){
+        //     ans=ans^ch;
+        // }
+        // return ans;
 
 
 
 
         // Approach 3 (hashmap)
+        unordered_map<char,int>map;
+        for(char &ch : s){
+            map[ch]++;
+        }
+
+        for(char &ch :t){
+            map[ch]--;
+
+            if(map[ch]<0){
+                return ch;
+            }
+        }
+
+        return 'z'; // here this line will never execute;
+
     }
 };

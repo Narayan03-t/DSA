@@ -15,7 +15,7 @@ public:
         for(int i : nums){
             map[i]++;
         }
-        int ans=-1;
+        int ans;
         for(auto it : map){
             if(it.second == 1){
                 ans = it.first;

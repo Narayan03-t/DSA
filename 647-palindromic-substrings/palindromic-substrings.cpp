@@ -1,34 +1,32 @@
 class Solution {
 public:
-
-    int expandaroundcenter(string s,int i,int j){
-        int count = 0;
-        while(i>=0 && j<s.length() && s[i]==s[j]){
+    int countpalindromicSubs(string s,int i,int j){
+        int count=0;
+        while(i>=0 && j<s.length() && s[i] == s[j]){
             count++;
             i--;
             j++;
         }
         return count;
     }
-
     int countSubstrings(string s) {
+        int n = s.length();
+        int ans = 0;
+        for(int centre=0;centre<n;centre++){
+            // centre ke arount mssn kr substring nikalna hai
+            // odd length ki substring
+            int i=centre;
+            int j=centre;
+            int oddplaindsubs = countpalindromicSubs(s,i,j);
 
-        int totalcount = 0;
+            // even length ki substring
+            i = centre;
+            j = centre+1;
+            int evenplaindsubs = countpalindromicSubs(s,i,j);
 
-        for(int center=0;center<s.length();center++){
-            // count odd size substring
-            int i=center;
-            int j=center;
-            int oddsizepalindromesubs = expandaroundcenter(s,i,j);
-
-            // count even size substring
-            i=center;
-            j=center+1;
-            int evensizepalindromesubs = expandaroundcenter(s,i,j);
-
-            totalcount = totalcount + oddsizepalindromesubs + evensizepalindromesubs;
+            ans = ans + oddplaindsubs + evenplaindsubs;
         }
-
-        return totalcount;
+        
+        return ans;
     }
 };

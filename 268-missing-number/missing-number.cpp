@@ -1,38 +1,22 @@
 class Solution {
 public:
-    int missingNumber(vector<int>& arr) {
-        sort(arr.begin(),arr.end());
+    int missingNumber(vector<int>& nums) {
+        // // XOR Approach
+        // int n = nums.size();
+        // int ans = n;
+        // for(int i=0;i<n;i++){
+        //     ans = ans ^ i ^ nums[i];
+        // }
+        // return ans;
 
-        int ansindex = -1;
-        
-        int n = arr.size();
-        int s = 0;
-        int e = n-1;
-        int mid = s + (e-s)/2;
-
-        while(s<=e){
-            int number = arr[mid];
-            int index = mid;
-            int diff = number - index;
-
-            if(diff == 0){
-            s = mid + 1;
-            }
-            else if(diff == 1){
-            ansindex = index;
-            e = mid - 1;
-            }
-
-            mid = s + (e-s)/2;
+        // method 2 
+        int n = nums.size();
+        int total_sum = n*(n+1)/2;
+        int given_sum = 0;
+        for(int i=0;i<n;i++){
+            given_sum = given_sum + nums[i];
         }
-        if(ansindex == -1){
-            return n;
-        }
-       
-
-        
-
-        
-        return ansindex;
+        int ans = total_sum - given_sum;
+        return ans;
     }
 };

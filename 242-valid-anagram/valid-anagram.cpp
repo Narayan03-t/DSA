@@ -1,12 +1,14 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-         if (s.length() != t.length()) return false;
-        int count[26] = {0};
-        for (char c : s) count[c - 'a']++;
-        for (char c : t) {
-            if (--count[c - 'a'] < 0) return false;
+        // Method 1: sorting and than compare
+        sort(s.begin(),s.end());
+        sort(t.begin(),t.end());
+        if(s==t){
+            return true;
         }
-        return true;
+        else{
+            return false;
+        }
     }
 };
